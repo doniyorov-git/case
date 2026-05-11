@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MEDCASE - Case Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for clinical feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6c6cd; /* outline-variant */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #76777d; /* outline */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#7c839b",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "on-secondary-container": "#fefcff",
+                        "tertiary-container": "#00201d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed": "#89f5e7",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "outline": "#76777d",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#316bf3",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-variant": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#00174b",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "secondary": "#0051d5",
+                        "secondary-fixed": "#dbe1ff",
+                        "primary": "#000000",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-container": "#0c9488"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "lg": "24px",
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "h3": ["Manrope", "sans-serif"],
+                        "h2": ["Manrope", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "display": ["Manrope", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "status": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "h1": ["Manrope", "sans-serif"]
+                    },
+                    fontSize: {
+                        "h3": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "h2": ["24px", { lineHeight: "1.3", fontWeight: "700" }],
+                        "label-caps": ["12px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "status": ["13px", { lineHeight: "1", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "h1": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen flex flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-xl border-b border-outline-variant shadow-sm flex justify-between items-center w-full px-lg py-sm sticky top-0 z-50">
+<div class="flex items-center gap-xl">
+<div class="font-h1 text-h1 font-bold tracking-tight text-secondary flex items-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 32px;">neurology</span>
+                MEDCASE
+            </div>
+<nav class="hidden md:flex items-center gap-lg mt-1">
+<!-- Inactive -->
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200 active:opacity-70" href="#">Dashboard</a>
+<!-- Active -->
+<a class="text-secondary border-b-2 border-secondary pb-1 font-body-md hover:text-secondary transition-colors duration-200 active:opacity-70" href="#">Cases</a>
+<!-- Inactive -->
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200 active:opacity-70" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-container-high p-sm rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-sm rounded-full transition-colors flex items-center justify-center relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant ml-sm cursor-pointer">
+<img alt="Dr. Julian Vane" class="w-full h-full object-cover" data-alt="Professional headshot of Dr. Julian Vane, a clinical specialist. Bright, modern hospital lighting with a clean, high-key corporate aesthetic. The doctor is wearing a pristine white coat over a subtle navy blue shirt, reflecting intellectual authority and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRjFIkIVoFsa54D3vFZXnB15KlpSEEV367qCZo-EWBHSTUzLHcjkNXahV7rFWccWGreDVwnZbeN0lRgoHVU9ktS6ZXXGdRq-XYu6JVx_pgjz_6kI_inNZyf7No0PmHAW-2SDNHfCybYry13CxomCLvGlE6yd7MfodYe_Ts6xtBbxP62K5bypu9EMN5rD1sCTO0yH4KUfRx866NpVVUSVr47KUyUt_JxIttx0a5qgK1HzyqirJOUMx0S7oFUUz47rgGwDKDS79WWes"/>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Case Library Sidebar (Admin Specific) -->
+<aside class="w-80 bg-surface-container-lowest border-r border-outline-variant flex flex-col h-full shadow-[4px_0_24px_rgba(0,23,75,0.02)] z-10">
+<div class="p-md border-b border-outline-variant">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-h3 text-h3 text-on-surface">Case Library</h2>
+<button class="bg-secondary text-on-secondary w-8 h-8 rounded-md flex items-center justify-center hover:bg-on-secondary-fixed-variant transition-colors shadow-sm" title="Create New Case">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface pl-10 pr-4 py-2 rounded-md border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none font-body-sm text-body-sm placeholder:text-on-surface-variant/70 transition-all" placeholder="Search ID, Diagnosis..." type="text"/>
+</div>
+<div class="flex gap-sm mt-sm">
+<select class="flex-1 bg-surface border border-outline-variant rounded-md px-sm py-1 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-secondary">
+<option>All Status</option>
+<option>Draft</option>
+<option>Published</option>
+</select>
+<select class="flex-1 bg-surface border border-outline-variant rounded-md px-sm py-1 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-secondary">
+<option>Specialty</option>
+<option>Cardio</option>
+<option>Trauma</option>
+</select>
+</div>
+</div>
+<!-- Case List -->
+<div class="flex-1 overflow-y-auto p-sm flex flex-col gap-unit">
+<!-- Active Item -->
+<div class="p-sm rounded-lg bg-surface-container-high border border-outline-variant cursor-pointer group flex flex-col gap-xs relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex justify-between items-start pl-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">C-8492</span>
+<span class="bg-surface border border-outline-variant text-on-surface-variant font-status text-status px-2 py-0.5 rounded-full text-[11px]">Draft</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface pl-1 leading-tight">42-M Trauma, MVA</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-1 truncate">Blunt force thoracic trauma...</p>
+</div>
+<!-- Inactive Items -->
+<div class="p-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container-low border border-transparent hover:border-outline-variant cursor-pointer group flex flex-col gap-xs transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">C-8491</span>
+<span class="bg-surface-dim text-on-surface font-status text-status px-2 py-0.5 rounded-full text-[11px]">Published</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface leading-tight group-hover:text-secondary transition-colors">78-F Acute Dyspnea</h4>
+<p class="font-body-sm text-body-sm text-outline-variant truncate">Suspected CHF exacerbation</p>
+</div>
+<div class="p-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container-low border border-transparent hover:border-outline-variant cursor-pointer group flex flex-col gap-xs transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">C-8490</span>
+<span class="bg-surface-dim text-on-surface font-status text-status px-2 py-0.5 rounded-full text-[11px]">Published</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface leading-tight group-hover:text-secondary transition-colors">24-M Appendicitis</h4>
+<p class="font-body-sm text-body-sm text-outline-variant truncate">Classic RLQ pain presentation</p>
+</div>
+</div>
+</aside>
+<!-- Editor Canvas -->
+<section class="flex-1 bg-surface flex flex-col h-full relative">
+<!-- Editor Header -->
+<div class="px-xl py-lg border-b border-outline-variant bg-surface-container-lowest flex justify-between items-center shrink-0 z-10 shadow-[0_4px_20px_rgba(0,23,75,0.02)]">
+<div>
+<div class="flex items-center gap-sm text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span>Cases</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Trauma</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-semibold text-on-surface">C-8492</span>
+</div>
+<input class="font-display text-display bg-transparent border-none p-0 focus:ring-0 text-on-surface w-[600px] hover:bg-surface-container-low focus:bg-surface-container-low rounded-md transition-colors" placeholder="Enter Case Title" type="text" value="42-M Trauma, MVA"/>
+</div>
+<div class="flex items-center gap-md">
+<span class="text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">cloud_done</span> Saved 2m ago
+                    </span>
+<button class="px-md py-2 border border-outline text-secondary font-status text-status rounded-md hover:bg-surface-container-low transition-colors flex items-center gap-sm bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+                        Preview Room
+                    </button>
+<button class="px-md py-2 bg-secondary text-on-secondary font-status text-status rounded-md hover:bg-on-secondary-fixed-variant transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
+                        Publish Case
+                    </button>
+</div>
+</div>
+<!-- Editor Body (Bento Grid) -->
+<div class="flex-1 overflow-y-auto p-xl">
+<div class="grid grid-cols-12 gap-lg max-w-container-max mx-auto">
+<!-- Metadata Form (Col 8) -->
+<div class="col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0_4px_20px_rgba(0,23,75,0.04)] overflow-hidden flex flex-col">
+<div class="bg-surface-bright px-md py-sm border-b border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+<h3 class="font-h3 text-h3 text-on-surface">Case Parameters</h3>
+</div>
+<div class="p-lg grid grid-cols-2 gap-x-lg gap-y-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Specialty Focus</label>
+<select class="bg-surface border border-outline-variant rounded-md px-md py-2 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full">
+<option>Emergency Medicine</option>
+<option selected="">Trauma Surgery</option>
+<option>Internal Medicine</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Difficulty Level</label>
+<div class="flex bg-surface border border-outline-variant rounded-md overflow-hidden">
+<button class="flex-1 py-2 font-status text-status border-r border-outline-variant hover:bg-surface-container-high transition-colors">Easy</button>
+<button class="flex-1 py-2 font-status text-status border-r border-outline-variant bg-surface-container-highest text-on-surface font-semibold">Medium</button>
+<button class="flex-1 py-2 font-status text-status hover:bg-surface-container-high transition-colors">Hard</button>
+</div>
+</div>
+<div class="col-span-2 flex flex-col gap-1 mt-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Brief Scenario Overview</label>
+<textarea class="bg-surface border border-outline-variant rounded-md px-md py-2 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full resize-none" placeholder="Provide a brief summary for the catalog..." rows="3">42-year-old male arrives via EMS after a high-speed motor vehicle collision. Presents with severe chest pain and respiratory distress. Suspected rib fractures and potential pneumothorax.</textarea>
+</div>
+</div>
+</div>
+<!-- Target Diagnosis & Outcome (Col 4) -->
+<div class="col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0_4px_20px_rgba(0,23,75,0.04)] overflow-hidden flex flex-col">
+<div class="bg-surface-bright px-md py-sm border-b border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<h3 class="font-h3 text-h3 text-on-surface">Target Resolution</h3>
+</div>
+<div class="p-lg flex flex-col gap-md flex-1">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Correct Diagnosis (ICD-10)</label>
+<div class="relative">
+<input class="bg-surface border border-outline-variant rounded-md pl-md pr-10 py-2 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full font-semibold" type="text" value="S27.0 - Traumatic pneumothorax"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-tertiary-container text-[20px] bg-tertiary-fixed-dim rounded-full p-0.5">check_circle</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 flex-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Critical Actions Required</label>
+<div class="border border-outline-variant rounded-md bg-surface p-sm flex flex-col gap-2 flex-1">
+<label class="flex items-start gap-sm cursor-pointer group">
+<input checked="" class="mt-1 rounded border-outline text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-secondary transition-colors">Order Stat Chest X-Ray</span>
+</label>
+<label class="flex items-start gap-sm cursor-pointer group">
+<input checked="" class="mt-1 rounded border-outline text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-secondary transition-colors">Perform Needle Decompression</span>
+</label>
+<label class="flex items-start gap-sm cursor-pointer group">
+<input class="mt-1 rounded border-outline text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-secondary transition-colors">Insert Chest Tube</span>
+</label>
+<button class="mt-auto flex items-center justify-center gap-1 text-secondary font-status text-status hover:bg-surface-container-high py-1 rounded transition-colors w-full border border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Action
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Patient History & Vitals (Col 12) -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0_4px_20px_rgba(0,23,75,0.04)] overflow-hidden mt-sm">
+<div class="bg-surface-bright px-md py-sm border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">assignment_ind</span>
+<h3 class="font-h3 text-h3 text-on-surface">Initial Presentation &amp; Vitals</h3>
+</div>
+<span class="bg-surface-container-highest text-on-surface font-label-caps text-label-caps px-2 py-1 rounded flex items-center gap-1 border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">timer</span> Time Zero
+                            </span>
+</div>
+<div class="grid grid-cols-12 divide-x divide-outline-variant">
+<!-- HPI Section -->
+<div class="col-span-8 p-lg flex flex-col gap-md">
+<div class="flex flex-col gap-1 h-full">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase flex justify-between">
+                                        History of Present Illness
+                                        <button class="text-secondary hover:underline flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">auto_awesome</span> Generate AI Draft</button>
+</label>
+<textarea class="flex-1 bg-surface border border-outline-variant rounded-md px-md py-3 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full resize-none min-h-[150px] leading-relaxed">EMS brings in a 42-year-old male involved in a high-speed frontal MVA. He was the restrained driver, airbag deployed. Extrication took 20 minutes. 
+                                        
+Patient complains of severe, sharp right-sided chest pain that worsens with inspiration. He reports feeling extremely short of breath. Denies loss of consciousness. No head, neck, or abdominal pain reported currently.</textarea>
+</div>
+</div>
+<!-- Vitals Monitor Panel -->
+<div class="col-span-4 p-lg bg-surface flex flex-col gap-md">
+<div class="flex justify-between items-center mb-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Initial Vitals</label>
+<span class="w-2 h-2 rounded-full bg-error animate-pulse" title="Critical Status"></span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<!-- HR -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm flex flex-col relative overflow-hidden group">
+<span class="text-on-surface-variant font-status text-status">HR</span>
+<div class="flex items-end gap-1">
+<input class="font-h2 text-h2 text-on-surface bg-transparent border-none p-0 w-16 focus:ring-0" type="number" value="128"/>
+<span class="text-on-surface-variant font-body-sm text-body-sm pb-1">bpm</span>
+</div>
+</div>
+<!-- BP -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm flex flex-col">
+<span class="text-on-surface-variant font-status text-status">BP</span>
+<div class="flex items-end gap-1">
+<input class="font-h2 text-h2 text-on-surface bg-transparent border-none p-0 w-20 focus:ring-0" type="text" value="88/50"/>
+</div>
+</div>
+<!-- SpO2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm flex flex-col">
+<span class="text-on-surface-variant font-status text-status">SpO2</span>
+<div class="flex items-end gap-1">
+<input class="font-h2 text-h2 text-error bg-transparent border-none p-0 w-12 focus:ring-0" type="number" value="86"/>
+<span class="text-on-surface-variant font-body-sm text-body-sm pb-1">% RA</span>
+</div>
+</div>
+<!-- RR -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-sm flex flex-col">
+<span class="text-on-surface-variant font-status text-status">RR</span>
+<div class="flex items-end gap-1">
+<input class="font-h2 text-h2 text-error bg-transparent border-none p-0 w-12 focus:ring-0" type="number" value="32"/>
+<span class="text-on-surface-variant font-body-sm text-body-sm pb-1">/min</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Lab Results Editor (Col 12) -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0_4px_20px_rgba(0,23,75,0.04)] overflow-hidden mt-sm mb-xl">
+<div class="bg-surface-bright px-md py-sm border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">biotech</span>
+<h3 class="font-h3 text-h3 text-on-surface">Available Investigations</h3>
+</div>
+<button class="bg-surface border border-outline-variant text-secondary font-status text-status px-3 py-1.5 rounded-md flex items-center gap-1 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Lab/Image
+                            </button>
+</div>
+<div class="p-0">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant uppercase w-1/4">Type</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant uppercase w-1/2">Result Value / Findings</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant uppercase w-1/4">Delay (Sim Time)</th>
+<th class="px-md py-sm"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-md py-3 align-top">
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-highest text-on-surface font-status text-status px-2 py-0.5 rounded border border-outline-variant">Imaging</span>
+<span class="font-body-sm text-body-sm font-semibold">CXR (Portable)</span>
+</div>
+</td>
+<td class="px-md py-3">
+<textarea class="w-full bg-surface border border-outline-variant rounded px-2 py-1 font-body-sm text-body-sm text-on-surface focus:border-secondary outline-none resize-none" rows="2">Decreased markings in right upper and middle lobes. Deep sulcus sign present on the right. Mediastinal shift to the left.</textarea>
+<button class="text-secondary font-body-sm text-body-sm mt-1 flex items-center gap-1 hover:underline"><span class="material-symbols-outlined text-[14px]">image</span> Attach Image</button>
+</td>
+<td class="px-md py-3 align-top">
+<select class="bg-surface border border-outline-variant rounded px-2 py-1 font-body-sm text-body-sm text-on-surface outline-none">
+<option>Immediate</option>
+<option selected="">5 minutes</option>
+<option>15 minutes</option>
+</select>
+</td>
+<td class="px-md py-3 align-top text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-error hover:bg-error-container p-1 rounded transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-md py-3 align-top">
+<div class="flex items-center gap-2">
+<span class="bg-surface-dim text-on-surface font-status text-status px-2 py-0.5 rounded border border-outline-variant">Blood</span>
+<span class="font-body-sm text-body-sm font-semibold">ABG</span>
+</div>
+</td>
+<td class="px-md py-3">
+<div class="grid grid-cols-4 gap-2">
+<div class="flex flex-col"><span class="text-[10px] text-outline">pH</span><input class="border border-outline-variant rounded px-2 py-1 text-sm bg-surface" type="text" value="7.31"/></div>
+<div class="flex flex-col"><span class="text-[10px] text-outline">pCO2</span><input class="border border-outline-variant rounded px-2 py-1 text-sm bg-surface" type="text" value="48"/></div>
+<div class="flex flex-col"><span class="text-[10px] text-outline">pO2</span><input class="border border-outline-variant rounded px-2 py-1 text-sm bg-surface text-error" type="text" value="55"/></div>
+<div class="flex flex-col"><span class="text-[10px] text-outline">HCO3</span><input class="border border-outline-variant rounded px-2 py-1 text-sm bg-surface" type="text" value="24"/></div>
+</div>
+</td>
+<td class="px-md py-3 align-top">
+<select class="bg-surface border border-outline-variant rounded px-2 py-1 font-body-sm text-body-sm text-on-surface outline-none">
+<option selected="">Immediate</option>
+<option>5 minutes</option>
+</select>
+</td>
+<td class="px-md py-3 align-top text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-error hover:bg-error-container p-1 rounded transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

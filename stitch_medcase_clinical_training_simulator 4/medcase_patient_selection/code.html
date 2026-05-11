@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MEDCASE - Select Patient Demographics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#7c839b",
+                      "on-error": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "tertiary-fixed-dim": "#6bd8cb",
+                      "on-secondary-container": "#fefcff",
+                      "tertiary-container": "#00201d",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-fixed": "#89f5e7",
+                      "on-tertiary-fixed-variant": "#005049",
+                      "outline": "#76777d",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#316bf3",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#bec6e0",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-low": "#eff4ff",
+                      "on-primary-fixed": "#131b2e",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-surface-variant": "#45464d",
+                      "surface-bright": "#f8f9ff",
+                      "outline-variant": "#c6c6cd",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "surface-dim": "#cbdbf5",
+                      "surface-variant": "#d3e4fe",
+                      "surface": "#f8f9ff",
+                      "inverse-surface": "#213145",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed": "#00174b",
+                      "primary-fixed": "#dae2fd",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "secondary": "#0051d5",
+                      "secondary-fixed": "#dbe1ff",
+                      "primary": "#000000",
+                      "primary-container": "#131b2e",
+                      "tertiary": "#000000",
+                      "inverse-primary": "#bec6e0",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "on-tertiary-fixed": "#00201d",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#565e74",
+                      "on-tertiary-container": "#0c9488"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "container-max": "1440px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "40px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "h3": [
+                              "Manrope"
+                      ],
+                      "h2": [
+                              "Manrope"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "status": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "status": [
+                              "13px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8f9ff;
+        }
+        .soft-medical-shadow {
+            box-shadow: 0 4px 20px rgba(0, 23, 75, 0.04);
+        }
+        .glassmorphic-overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 docked full-width top-0 backdrop-blur-xl border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center w-full px-lg py-sm sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<span class="font-h1 text-h1 font-bold tracking-tight text-secondary dark:text-secondary-fixed-dim">MEDCASE</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-secondary dark:text-secondary-fixed-dim border-b-2 border-secondary dark:border-secondary-fixed-dim pb-1 font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 active:opacity-70 transition-all" href="#">Cases</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Resources</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img alt="Dr. Julian Vane" class="w-full h-full object-cover" data-alt="A professional headshot of a male doctor in a modern clinical setting, wearing a white coat over blue scrubs, looking confidently at the camera. Soft, high-key lighting creates a bright, trustworthy aesthetic. Deep blues and clean whites dominate the color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbcEdSG_CmloVrfOAuFBz9a5KGLdEXPiepFI1XaKvN1s8_5XyBM0_avOux8M-59O2kNokX47oWIWEsYlVp_cb-4JUmW5N3myiDqYfPVYqXofXECYR0v7Ayc5lzf2efMZmxXi-oDOyP3YUglnPfsCcnsyihOANR-UugJxLTxkq6p8mIeCuUp5OAJjGhZYCo197zjGzSh5gcyZUIXzV7o4wEw5NnTAycPFI8BmOKL1gO-s8R1IkkXG9fzMXq2NfyK89ZAqZQe8NDSX4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex items-center justify-center p-lg md:p-xl relative overflow-hidden">
+<!-- Decorative Background Elements for Depth -->
+<div class="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-secondary-container rounded-full mix-blend-multiply filter blur-3xl opacity-20 pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[30%] h-[30%] bg-tertiary-container rounded-full mix-blend-multiply filter blur-3xl opacity-10 pointer-events-none"></div>
+<div class="max-w-container-max w-full mx-auto relative z-10 flex flex-col items-center">
+<!-- Header Section -->
+<div class="text-center mb-xl">
+<h1 class="font-display text-display text-on-surface mb-sm">Select Demographics</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Choose the patient age group for the upcoming clinical simulation. Each demographic presents unique physiological baselines and common pathologies.
+                </p>
+</div>
+<!-- Bento Grid / Cards Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg w-full max-w-6xl">
+<!-- Pediatric Card -->
+<div class="bg-surface rounded-xl border border-outline-variant soft-medical-shadow overflow-hidden flex flex-col transition-transform duration-300 hover:-translate-y-2 group cursor-pointer relative">
+<!-- Hover Effect Background -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-secondary-container/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<div class="bg-surface-container-lowest p-md border-b border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="child_care" style="font-variation-settings: 'FILL' 1;">child_care</span>
+<h2 class="font-h3 text-h3 text-on-surface">Pediatric</h2>
+<span class="ml-auto font-status text-status bg-surface-container px-sm py-xs rounded-full text-on-primary-container">0-18 Years</span>
+</div>
+<div class="p-lg flex-grow flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-lg rounded-full border-4 border-surface-container-high overflow-hidden shadow-sm">
+<img alt="Pediatric Avatar" class="w-full h-full object-cover" data-alt="A stylized, modern illustration of a young child's face, suitable for a clinical app avatar. The color palette is clean, utilizing soft blues and whites. The lighting is bright and even, conveying a sense of health and innocence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9sj_AJjGEygRbFDknVDBRXCCzfaDT4j2bBZJoFFfHT_Ph2OsCHPmoy1c8XMjU2_eOY9Naol-LjRzRSxhLqUg6Ks7s5SPuNp_AO12PEpv-2XohjtTWPbvR8Cp5DVdJ5hzLuLCLQDptteELAqYnZvZ32rSKChNdfFrkm2Mp0cxuxrvS_eblWS854TL1ZGODCefs2f3FXc8ZTnAgq6i3l7n3hbq7_uURJ3mmEde_2Q2ejiyU3COQTk7Ghl3Hp648NgFb-gwkJWblxb4"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md text-left w-full">
+                            Focuses on congenital anomalies, developmental milestones, and acute pediatric illnesses. Key challenge: rapid physiological deterioration.
+                        </p>
+<div class="w-full mt-auto">
+<button class="w-full bg-surface-container-lowest border border-secondary text-secondary font-label-caps text-label-caps py-sm px-md rounded hover:bg-surface-container-low transition-colors duration-200">
+                                Select Pediatric
+                            </button>
+</div>
+</div>
+</div>
+<!-- Adult Card (Active/Highlighted) -->
+<div class="bg-surface rounded-xl border-2 border-secondary soft-medical-shadow overflow-hidden flex flex-col transition-transform duration-300 scale-105 z-10 relative">
+<!-- Subtle Glow -->
+<div class="absolute inset-0 ring-4 ring-secondary/20 rounded-xl pointer-events-none"></div>
+<div class="bg-secondary-container p-md border-b border-secondary flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<h2 class="font-h3 text-h3 text-on-secondary-container">Adult</h2>
+<span class="ml-auto font-status text-status bg-surface-container-lowest px-sm py-xs rounded-full text-secondary">19-64 Years</span>
+</div>
+<div class="p-lg flex-grow flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-lg rounded-full border-4 border-secondary-fixed-dim overflow-hidden shadow-md">
+<img alt="Adult Avatar" class="w-full h-full object-cover" data-alt="A highly detailed, professional illustration of a middle-aged adult face, used as a medical avatar. The style is modern and clinical, with a color palette of deep navy and crisp white. The lighting is structured and clear, emphasizing facial structure without emotion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR179Nb1tz7MyzMMxSyg2zto-psu8fbVZihCmj03mbjGykvE6tA4lqtM1c6fTvUXatB_T0VEgPP6iz9ZmEgWQiN2PpvKBJweGeQzsjKbKuGqoKG74iLvfgPpLCjDJAQujznJXd1ojeGeg0Se7gnMQRoNCTaZErm4jQUL-LCinORJZoOlao08BjsORkTQNVp4ggGduZuN9d2FG4xXk20wBnX34b8BYxQJQGyjsFsWEbmqRZpChhmvEwLidfAdCKyo5mwk_tAhiUie4"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md text-left w-full">
+                            Standard physiological baselines. Scenarios range from acute trauma to complex chronic disease management and systemic infections.
+                        </p>
+<div class="w-full mt-auto">
+<button class="w-full bg-secondary text-on-primary font-label-caps text-label-caps py-sm px-md rounded hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed transition-colors duration-200 shadow-sm relative overflow-hidden">
+<!-- Inner glow effect on button -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-white/20"></div>
+                                Select Adult
+                            </button>
+</div>
+</div>
+</div>
+<!-- Geriatric Card -->
+<div class="bg-surface rounded-xl border border-outline-variant soft-medical-shadow overflow-hidden flex flex-col transition-transform duration-300 hover:-translate-y-2 group cursor-pointer relative">
+<!-- Hover Effect Background -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-high/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<div class="bg-surface-container-lowest p-md border-b border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline" data-icon="elderly" style="font-variation-settings: 'FILL' 1;">elderly</span>
+<h2 class="font-h3 text-h3 text-on-surface">Geriatric</h2>
+<span class="ml-auto font-status text-status bg-surface-container px-sm py-xs rounded-full text-on-surface-variant">65+ Years</span>
+</div>
+<div class="p-lg flex-grow flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-lg rounded-full border-4 border-surface-container-high overflow-hidden shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
+<img alt="Geriatric Avatar" class="w-full h-full object-cover grayscale opacity-80" data-alt="A dignified, minimalist illustration of an elderly person's face for a medical app. The aesthetic is clean and respectful, utilizing muted slate tones and white. The lighting is soft but defining, highlighting wisdom and clinical relevance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPRHeycMVfdpjs5HO0YxKeiKton7q7HkZ3h3bBSBN_WC_NtkYbwiGSdNBg_oqC56yWbOyKpU3rL4XGzo_8CcQtgY9ynAXRLqfKKXOn8vB7KV6lvjyKyMqucj4bMxqZB6GeG3SpjxT2L69AZSjob38M11yJwQBH1oa5Dlsw-8TqG4pa-3GlfazQUz2qM6gm4D2zoy4DsPRcTC58WnS9VCmV2Thi5PlBICSKUnX4YQL7QR6cav3USvlFUCKvg5JJluzqa3-CMSsYsG4"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md text-left w-full">
+                            Features multi-morbidity, polypharmacy considerations, and altered presentations of common illnesses. Key challenge: physiological frailty.
+                        </p>
+<div class="w-full mt-auto">
+<button class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-caps text-label-caps py-sm px-md rounded hover:bg-surface-container-low transition-colors duration-200">
+                                Select Geriatric
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Actions -->
+<div class="mt-xl flex gap-md">
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-caps text-label-caps py-sm px-lg rounded hover:bg-surface-container-low transition-colors duration-200">
+                    Cancel Configuration
+                </button>
+<button class="bg-secondary text-on-primary font-label-caps text-label-caps py-sm px-lg rounded opacity-50 cursor-not-allowed shadow-sm relative overflow-hidden" disabled="">
+<div class="absolute top-0 left-0 right-0 h-1 bg-white/20"></div>
+                    Proceed to Vital Signs
+                </button>
+</div>
+</div>
+</main>
+</body></html>

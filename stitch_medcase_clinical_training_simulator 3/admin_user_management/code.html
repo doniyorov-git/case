@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MEDCASE Admin - User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#316bf3",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#131b2e",
+                    "on-surface-variant": "#45464d",
+                    "surface-variant": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-error": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-primary-container": "#7c839b",
+                    "tertiary-container": "#00201d",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "on-secondary-container": "#fefcff",
+                    "outline": "#76777d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "tertiary-fixed": "#89f5e7",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#000000",
+                    "inverse-primary": "#bec6e0",
+                    "on-secondary-fixed-variant": "#003ea8",
+                    "on-tertiary-fixed": "#00201d",
+                    "surface-tint": "#565e74",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#0c9488",
+                    "on-background": "#0b1c30",
+                    "surface": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed": "#00174b",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "primary-fixed": "#dae2fd",
+                    "on-surface": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "secondary-fixed": "#dbe1ff",
+                    "secondary": "#0051d5",
+                    "primary": "#000000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "xl": "40px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "unit": "4px",
+                    "container-max": "1440px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Manrope"],
+                    "h3": ["Manrope"],
+                    "h2": ["Manrope"],
+                    "status": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Manrope"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "status": ["13px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 1);
+        }
+        .clinical-shadow {
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- AdminSideNav Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 flex flex-col py-md bg-surface-container-lowest border-r border-outline-variant">
+<div class="px-lg mb-xl">
+<h1 class="font-display text-h3 font-bold text-on-surface">MEDCASE Admin</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Clinical Intelligence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-all group" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center px-lg py-sm bg-surface-container-high text-secondary border-r-4 border-secondary font-bold transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined mr-md">group</span>
+<span class="font-label-caps text-label-caps">User Management</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-all group" href="#">
+<span class="material-symbols-outlined mr-md">edit_note</span>
+<span class="font-label-caps text-label-caps">Content</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-all group" href="#">
+<span class="material-symbols-outlined mr-md">folder_shared</span>
+<span class="font-label-caps text-label-caps">Resources</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-all group" href="#">
+<span class="material-symbols-outlined mr-md">notifications_active</span>
+<span class="font-label-caps text-label-caps">Notifications</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-all group" href="#">
+<span class="material-symbols-outlined mr-md">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-md">
+<a class="flex items-center px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined mr-md">help</span>
+<span class="font-label-caps text-label-caps">Help Center</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined mr-md">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<div class="ml-64 flex flex-col min-h-screen">
+<!-- AdminHeader Shell -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg h-16 bg-surface-bright border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-sm focus:ring-2 focus:ring-secondary/20 transition-all" placeholder="Search systems, clinical users, or identifiers..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-secondary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-secondary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-sm">
+<div class="text-right hidden sm:block">
+<p class="font-label-caps text-label-caps text-secondary uppercase">Administrator</p>
+<p class="text-[10px] text-on-surface-variant font-bold">SYSTEM_OPS_01</p>
+</div>
+<img alt="Administrator Avatar" class="w-9 h-9 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida/ADBb0ui2fzoIDDlpjX2flxHO7KYmKpZykc64zX158TDg4wzkYH0wg4lsbZ1Le24X8N1wom2dAaIj366sDsVfIqL9ekznnnJ9SFr53SgnLrlLvXkJeMkXy9ZbgTfln4J59O3XC1gv6Wgcxw6iGrKfZfItEMsOcD5woukYFCuy23oJ1Y8gSnxPo7M4pAieI1TF-HeEic4Mob3tn4IGx8jJEE9xbpt3YOKVjGQdXrt9VPdr4Wad3vc0uSAMKZPRbg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-xl">
+<div class="max-w-container-max mx-auto space-y-lg">
+<!-- Page Title Area -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-8">
+<div>
+<h2 class="font-display text-h1 text-primary">User Management</h2>
+<p class="text-on-surface-variant font-body-md mt-1">Orchestrate clinical access and simulator permissions across the ecosystem.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-sm px-md py-2 bg-secondary text-on-secondary rounded-lg font-label-caps text-label-caps hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            Provision New User
+                        </button>
+<button class="flex items-center gap-sm px-md py-2 border border-secondary text-secondary rounded-lg font-label-caps text-label-caps hover:bg-secondary/5 transition-all">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+                            Export Data
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Layout for Controls -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-gutter mb-lg">
+<!-- Stats Card -->
+<div class="lg:col-span-1 bg-white border border-outline-variant rounded-xl p-md clinical-shadow">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Active Sessions</span>
+<span class="material-symbols-outlined text-secondary">monitoring</span>
+</div>
+<p class="font-display text-h1">1,284</p>
+<div class="mt-2 flex items-center gap-xs text-[12px] text-teal-600">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>12% from last hour</span>
+</div>
+</div>
+<!-- Advanced Filters Box -->
+<div class="lg:col-span-3 bg-white border border-outline-variant rounded-xl p-md clinical-shadow flex flex-wrap items-center gap-md">
+<div class="flex flex-col gap-xs flex-1 min-w-[200px]">
+<label class="font-label-caps text-[10px] text-on-surface-variant">Filter by Clinical Role</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg py-2 text-body-sm focus:ring-2 focus:ring-secondary/20">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Educator</option>
+<option>Student</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs flex-1 min-w-[200px]">
+<label class="font-label-caps text-[10px] text-on-surface-variant">Account Status</label>
+<div class="flex gap-2">
+<button class="px-3 py-2 bg-surface-container-high rounded-lg text-body-sm font-semibold text-secondary">Active</button>
+<button class="px-3 py-2 bg-surface-container-low rounded-lg text-body-sm text-on-surface-variant">Inactive</button>
+<button class="px-3 py-2 bg-surface-container-low rounded-lg text-body-sm text-on-surface-variant">Suspended</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-[10px] text-on-surface-variant">Date Range</label>
+<button class="flex items-center gap-sm px-4 py-2 border border-outline-variant rounded-lg text-body-sm">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+                                Last 30 Days
+                            </button>
+</div>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="bg-white border border-outline-variant rounded-xl clinical-shadow overflow-hidden">
+<div class="bg-surface-container-low px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface">System Access Directory</h3>
+<div class="flex items-center gap-md">
+<span class="text-body-sm text-on-surface-variant">Showing 1-10 of 1,284 users</span>
+<div class="flex border border-outline-variant rounded-lg overflow-hidden">
+<button class="p-1 hover:bg-surface-container text-outline"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-1 border-l border-outline-variant hover:bg-surface-container text-outline"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">User Name</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Email Address</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Role</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Last Login</th>
+<th class="px-lg py-md"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-on-primary-fixed">ES</div>
+<div>
+<p class="font-body-md font-semibold text-primary">Dr. Elena Sterling</p>
+<p class="text-[11px] font-label-caps text-on-surface-variant">ID: MED-9920</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">e.sterling@medcase.edu</td>
+<td class="px-lg py-md">
+<span class="px-2 py-1 bg-slate-100 text-secondary rounded text-[11px] font-bold uppercase tracking-wider">Educator</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-1 text-[13px] font-semibold text-teal-700 bg-teal-50 px-2 py-1 rounded-full w-fit">
+<span class="w-2 h-2 rounded-full bg-teal-600"></span> Active
+                                        </span>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">2 mins ago</td>
+<td class="px-lg py-md text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 text-secondary hover:bg-surface-container rounded-lg transition-all">
+<span class="material-symbols-outlined">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed">JM</div>
+<div>
+<p class="font-body-md font-semibold text-primary">James Miller</p>
+<p class="text-[11px] font-label-caps text-on-surface-variant">ID: STU-1142</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">j.miller@medcase.edu</td>
+<td class="px-lg py-md">
+<span class="px-2 py-1 bg-slate-100 text-on-surface-variant rounded text-[11px] font-bold uppercase tracking-wider">Student</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-1 text-[13px] font-semibold text-orange-700 bg-orange-50 px-2 py-1 rounded-full w-fit">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span> Inactive
+                                        </span>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">14 hours ago</td>
+<td class="px-lg py-md text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 text-secondary hover:bg-surface-container rounded-lg transition-all">
+<span class="material-symbols-outlined">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center font-bold text-white">SA</div>
+<div>
+<p class="font-body-md font-semibold text-primary">Sarah Ahmed</p>
+<p class="text-[11px] font-label-caps text-on-surface-variant">ID: ADM-005</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">s.ahmed@medcase.edu</td>
+<td class="px-lg py-md">
+<span class="px-2 py-1 bg-primary-container text-white rounded text-[11px] font-bold uppercase tracking-wider">Admin</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-1 text-[13px] font-semibold text-teal-700 bg-teal-50 px-2 py-1 rounded-full w-fit">
+<span class="w-2 h-2 rounded-full bg-teal-600"></span> Active
+                                        </span>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">Just now</td>
+<td class="px-lg py-md text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 text-secondary hover:bg-surface-container rounded-lg transition-all">
+<span class="material-symbols-outlined">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center font-bold text-on-error-container">KV</div>
+<div>
+<p class="font-body-md font-semibold text-primary">Kevin Vance</p>
+<p class="text-[11px] font-label-caps text-on-surface-variant">ID: STU-8821</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">k.vance@medcase.edu</td>
+<td class="px-lg py-md">
+<span class="px-2 py-1 bg-slate-100 text-on-surface-variant rounded text-[11px] font-bold uppercase tracking-wider">Student</span>
+</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-1 text-[13px] font-semibold text-error bg-error-container px-2 py-1 rounded-full w-fit">
+<span class="w-2 h-2 rounded-full bg-error"></span> Suspended
+                                        </span>
+</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">3 days ago</td>
+<td class="px-lg py-md text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 text-secondary hover:bg-surface-container rounded-lg transition-all">
+<span class="material-symbols-outlined">open_in_new</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- User Profile Side Drawer (Simulation) -->
+<div class="fixed inset-0 z-[60] bg-on-background/40 backdrop-blur-md flex justify-end">
+<div class="w-full max-w-lg bg-surface-bright h-full clinical-shadow animate-in slide-in-from-right duration-300 flex flex-col">
+<!-- Drawer Header -->
+<div class="p-lg border-b border-outline-variant flex justify-between items-center bg-white">
+<div>
+<h3 class="font-display text-h2 text-primary">User Profile</h3>
+<p class="font-label-caps text-[10px] text-secondary">CORE SYSTEM ACCESS ENTITY</p>
+</div>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Content -->
+<div class="flex-1 overflow-y-auto p-lg space-y-xl">
+<!-- Profile Header -->
+<div class="flex items-center gap-lg">
+<div class="relative">
+<img alt="Profile detail" class="w-24 h-24 rounded-2xl object-cover border-2 border-secondary/20 p-1" src="https://lh3.googleusercontent.com/aida/ADBb0ui2fzoIDDlpjX2flxHO7KYmKpZykc64zX158TDg4wzkYH0wg4lsbZ1Le24X8N1wom2dAaIj366sDsVfIqL9ekznnnJ9SFr53SgnLrlLvXkJeMkXy9ZbgTfln4J59O3XC1gv6Wgcxw6iGrKfZfItEMsOcD5woukYFCuy23oJ1Y8gSnxPo7M4pAieI1TF-HeEic4Mob3tn4IGx8jJEE9xbpt3YOKVjGQdXrt9VPdr4Wad3vc0uSAMKZPRbg"/>
+<span class="absolute -bottom-2 -right-2 bg-teal-500 border-2 border-white w-6 h-6 rounded-full flex items-center justify-center text-white text-[10px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+</div>
+<div>
+<h4 class="font-display text-h3 text-primary">Dr. Elena Sterling</h4>
+<p class="text-body-md text-on-surface-variant">Clinical Simulation Lead</p>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-[2px] bg-secondary-container/10 text-secondary border border-secondary/20 rounded text-[10px] font-bold">EDUCATOR_PRIVILEGED</span>
+<span class="px-2 py-[2px] bg-slate-100 text-on-surface-variant border border-outline-variant rounded text-[10px] font-bold">V-SYNC ENABLED</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Details -->
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md rounded-xl">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">Total Simulations Run</p>
+<p class="text-h3 font-display">412</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">Last Score Avg</p>
+<p class="text-h3 font-display text-teal-600">98.2%</p>
+</div>
+</div>
+<!-- Role Management Section -->
+<section class="space-y-md">
+<h5 class="font-label-caps text-label-caps border-b border-outline-variant pb-2">Modify Permissions</h5>
+<div class="space-y-sm">
+<div class="p-md border border-outline-variant rounded-lg hover:border-secondary transition-all cursor-pointer bg-white group">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-body-md font-semibold text-primary">System Administrator</p>
+<p class="text-body-sm text-on-surface-variant">Full override and clinical model editing capabilities.</p>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-outline group-hover:border-secondary"></div>
+</div>
+</div>
+<div class="p-md border-2 border-secondary rounded-lg bg-secondary/5 transition-all cursor-pointer relative overflow-hidden">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-body-md font-semibold text-primary">Clinical Educator</p>
+<p class="text-body-sm text-on-surface-variant">Student monitoring and simulation assignment access.</p>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-secondary bg-secondary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Activity Feed -->
+<section class="space-y-md">
+<h5 class="font-label-caps text-label-caps border-b border-outline-variant pb-2">Recent Clinical Activity</h5>
+<div class="space-y-md">
+<div class="flex gap-md">
+<div class="w-[2px] bg-outline-variant relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<div>
+<p class="text-body-sm font-bold">Modified 'Tension Pneumothorax' Case</p>
+<p class="text-[12px] text-on-surface-variant">Oct 24, 2023 • 14:32</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-[2px] bg-outline-variant relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-outline"></div>
+</div>
+<div>
+<p class="text-body-sm font-bold">Validated 12 Student Assessment Scores</p>
+<p class="text-[12px] text-on-surface-variant">Oct 23, 2023 • 09:11</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Drawer Footer -->
+<div class="p-lg border-t border-outline-variant bg-white flex gap-md">
+<button class="flex-1 py-3 bg-secondary text-on-secondary rounded-lg font-label-caps text-label-caps hover:brightness-110 transition-all">Save Changes</button>
+<button class="flex-1 py-3 border border-error text-error rounded-lg font-label-caps text-label-caps hover:bg-error/5 transition-all">Suspend User</button>
+</div>
+</div>
+</div>
+</body></html>

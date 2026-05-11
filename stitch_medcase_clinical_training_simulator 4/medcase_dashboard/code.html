@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MEDCASE - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#7c839b",
+                      "on-error": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "tertiary-fixed-dim": "#6bd8cb",
+                      "on-secondary-container": "#fefcff",
+                      "tertiary-container": "#00201d",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-fixed": "#89f5e7",
+                      "on-tertiary-fixed-variant": "#005049",
+                      "outline": "#76777d",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#316bf3",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#bec6e0",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-low": "#eff4ff",
+                      "on-primary-fixed": "#131b2e",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-surface-variant": "#45464d",
+                      "surface-bright": "#f8f9ff",
+                      "outline-variant": "#c6c6cd",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "surface-dim": "#cbdbf5",
+                      "surface-variant": "#d3e4fe",
+                      "surface": "#f8f9ff",
+                      "inverse-surface": "#213145",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed": "#00174b",
+                      "primary-fixed": "#dae2fd",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "secondary": "#0051d5",
+                      "secondary-fixed": "#dbe1ff",
+                      "primary": "#000000",
+                      "primary-container": "#131b2e",
+                      "tertiary": "#000000",
+                      "inverse-primary": "#bec6e0",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "on-tertiary-fixed": "#00201d",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#565e74",
+                      "on-tertiary-container": "#0c9488"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "container-max": "1440px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "40px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "h3": [
+                              "Manrope"
+                      ],
+                      "h2": [
+                              "Manrope"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "status": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "status": [
+                              "13px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .soft-medical-shadow {
+            box-shadow: 0 4px 20px rgba(11, 28, 48, 0.04);
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 docked full-width top-0 backdrop-blur-xl border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center w-full px-lg py-sm sticky top-0 z-50">
+<div class="flex items-center gap-xl">
+<span class="font-h1 text-h1 font-bold tracking-tight text-secondary dark:text-secondary-fixed-dim">MEDCASE</span>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-secondary dark:text-secondary-fixed-dim border-b-2 border-secondary dark:border-secondary-fixed-dim pb-1 font-body-md active:opacity-70 transition-all" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 active:opacity-70 transition-all" href="#">Cases</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 active:opacity-70 transition-all" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button aria-label="dark_mode" class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button aria-label="notifications" class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+<img alt="Dr. Julian Vane" class="w-full h-full object-cover" data-alt="A professional headshot of a doctor in a modern clinical setting, wearing a white coat with a stethoscope. Soft, natural lighting. Professional, authoritative yet approachable mood. High-key light-mode aesthetic with subtle cool tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEsOhXV6XFxIYaAhWZhktX2DY6HD8xAQR4ug2a79iqiOaBy1wXeIbcoQ8Nam7HpohjK0ox38raBlC5Tp8-A1RUU4dvoXZxtAbdkY_usithr8OVKwztzpvezFd4CNMeMhY868fKBLWld48_bMUOkQtIK10mwTMsd8L0eUKha8gcn_3sQgzLTHEmyanMUSD39cupxkXJM6e-FPQKPG3cZTn8dZAum-fo5I0DW01i7XO_z1kmPgF4Pie0NrS4RnKqgd_dmw8BuP1GPAk"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Used here as dashboard navigation / performance sidebar) -->
+<aside class="hidden lg:flex flex-col w-64 bg-surface-container-low/90 dark:bg-surface-container-lowest/10 border-r border-outline-variant dark:border-outline backdrop-blur-2xl shadow-md p-md z-40 shrink-0">
+<div class="mb-xl px-sm">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="insights">insights</span>
+<h2 class="font-h3 text-h3 font-bold text-on-surface dark:text-on-surface">Performance</h2>
+</div>
+<!-- Performance Trends Chart Placeholder -->
+<div class="bg-surface rounded-lg border border-outline-variant p-md soft-medical-shadow mb-lg">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-sm">Accuracy Trend (30d)</p>
+<div class="h-24 flex items-end justify-between gap-1">
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 55%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 80%"></div>
+<div class="w-full bg-secondary rounded-t-sm" style="height: 92%"></div>
+</div>
+<div class="flex justify-between mt-xs">
+<span class="font-status text-status text-on-surface-variant">Nov</span>
+<span class="font-status text-status text-on-surface-variant">Dec</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center bg-surface-variant/50 p-sm rounded-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Avg. Time/Case</span>
+<span class="font-status text-status text-on-surface font-semibold">14m 20s</span>
+</div>
+<div class="flex justify-between items-center bg-surface-variant/50 p-sm rounded-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Peer Rank</span>
+<span class="font-status text-status text-on-surface font-semibold">Top 12%</span>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-sm mt-auto">
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg shadow-sm cursor-pointer active:scale-98 transition-all hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Overview</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg cursor-pointer active:scale-98 transition-all hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg cursor-pointer active:scale-98 transition-all hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-label-caps text-label-caps">Achievements</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-lg md:p-xl bg-surface">
+<div class="max-w-container-max mx-auto">
+<!-- Welcome & Progress Summary (Bento-style top row) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<!-- Welcome Card -->
+<div class="col-span-1 md:col-span-2 bg-surface rounded-xl border border-outline-variant soft-medical-shadow p-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-surface-container-highest rounded-full -translate-y-1/2 translate-x-1/4 opacity-50 blur-3xl"></div>
+<div class="relative z-10">
+<h1 class="font-h2 text-h2 text-on-surface mb-xs">Welcome back, Dr. Vane.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">You are currently on a 5-day diagnostic streak.</p>
+</div>
+<div class="flex gap-lg relative z-10 mt-auto">
+<div class="bg-surface-container-low rounded-lg p-md border border-outline-variant flex-1 flex flex-col gap-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Diagnostic Accuracy</span>
+<div class="flex items-end gap-sm">
+<span class="font-display text-display text-secondary">92%</span>
+<span class="font-status text-status text-on-tertiary-container bg-tertiary-fixed-dim/20 px-xs py-[2px] rounded mb-sm">+4%</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-md border border-outline-variant flex-1 flex flex-col gap-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Cases Completed</span>
+<div class="flex items-end gap-sm">
+<span class="font-display text-display text-on-surface">148</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Level Card -->
+<div class="col-span-1 bg-secondary text-on-secondary rounded-xl border border-secondary-fixed shadow-md p-lg flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary to-on-secondary-fixed-variant opacity-80"></div>
+<div class="relative z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-[48px] mb-sm" data-icon="workspace_premium" data-weight="fill" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim mb-xs">Current Tier</span>
+<h2 class="font-display text-display text-on-secondary mb-md">Lvl 24</h2>
+<div class="w-full bg-on-secondary-fixed-variant rounded-full h-1.5 mb-sm">
+<div class="bg-tertiary-fixed h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<span class="font-status text-status text-secondary-fixed">2,450 / 3,000 XP to Senior Attending</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Left Column: Active Session -->
+<div class="lg:col-span-1">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-on-surface" data-icon="play_circle">play_circle</span>
+<h3 class="font-h3 text-h3 text-on-surface">Active Session</h3>
+</div>
+<div class="bg-surface rounded-xl border border-outline-variant soft-medical-shadow overflow-hidden flex flex-col">
+<!-- Clinical Header -->
+<div class="bg-surface-container-low p-md border-b border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="local_hospital">local_hospital</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Trauma Bay 4</span>
+<div class="ml-auto flex gap-xs">
+<span class="bg-error-container text-on-error-container font-status text-status px-sm py-[2px] rounded-full">Critical</span>
+</div>
+</div>
+<div class="p-md flex flex-col gap-md">
+<div>
+<h4 class="font-h3 text-h3 text-on-surface mb-xs">42-M Multiple Trauma</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Motor vehicle collision. Hypotensive, tachycardic on arrival. FAST exam pending.</p>
+</div>
+<div class="flex flex-wrap gap-sm">
+<span class="bg-surface-variant text-on-surface font-status text-status px-sm py-xs rounded border border-outline-variant">Hypovolemia</span>
+<span class="bg-surface-variant text-on-surface font-status text-status px-sm py-xs rounded border border-outline-variant">FAST</span>
+</div>
+<div class="mt-sm">
+<div class="flex justify-between mb-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Diagnostic Progress</span>
+<span class="font-status text-status text-secondary">40%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 flex gap-1">
+<div class="bg-on-tertiary-container h-1.5 rounded-l-full w-1/3"></div>
+<div class="bg-on-tertiary-container h-1.5 w-1/12"></div>
+</div>
+</div>
+<button class="mt-md w-full bg-secondary text-on-secondary font-body-md font-semibold py-sm px-md rounded-lg shadow-sm border border-secondary hover:bg-secondary/90 transition-colors flex items-center justify-center gap-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
+                                    Resume Case
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Recommended Cases -->
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-h3 text-h3 text-on-surface">Recommended for You</h3>
+</div>
+<a class="font-body-sm text-body-sm text-secondary font-semibold hover:underline" href="#">View Library</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Case Card 1 -->
+<div class="bg-surface rounded-xl border border-outline-variant soft-medical-shadow p-md flex flex-col gap-sm hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="bg-surface-container-high text-on-surface font-status text-status px-sm py-[2px] rounded-full border border-outline-variant">Cardiology</div>
+<span class="bg-surface-variant text-on-surface font-status text-status px-sm py-[2px] rounded-full">Medium</span>
+</div>
+<h4 class="font-h3 text-h3 text-on-surface group-hover:text-secondary transition-colors">68-F Exertional Chest Pain</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-md">Patient presents with radiating jaw pain during exercise. Hx of hypertension and type 2 diabetes.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+<span class="font-status text-status">Est. 15m</span>
+</div>
+<span class="font-status text-status text-secondary font-semibold group-hover:translate-x-1 transition-transform">Start →</span>
+</div>
+</div>
+<!-- Case Card 2 -->
+<div class="bg-surface rounded-xl border border-outline-variant soft-medical-shadow p-md flex flex-col gap-sm hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="bg-surface-container-high text-on-surface font-status text-status px-sm py-[2px] rounded-full border border-outline-variant">Neurology</div>
+<span class="bg-error-container text-on-error-container font-status text-status px-sm py-[2px] rounded-full">Hard</span>
+</div>
+<h4 class="font-h3 text-h3 text-on-surface group-hover:text-secondary transition-colors">32-M Sudden Onset Weakness</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-md">Acute unilateral hemiparesis and aphasia in a young adult with no known prior medical history.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+<span class="font-status text-status">Est. 25m</span>
+</div>
+<span class="font-status text-status text-secondary font-semibold group-hover:translate-x-1 transition-transform">Start →</span>
+</div>
+</div>
+<!-- Case Card 3 -->
+<div class="bg-surface rounded-xl border border-outline-variant soft-medical-shadow p-md flex flex-col gap-sm hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="bg-surface-container-high text-on-surface font-status text-status px-sm py-[2px] rounded-full border border-outline-variant">Pulmonology</div>
+<span class="bg-tertiary-fixed-dim/30 text-on-tertiary-container font-status text-status px-sm py-[2px] rounded-full">Easy</span>
+</div>
+<h4 class="font-h3 text-h3 text-on-surface group-hover:text-secondary transition-colors">24-F Chronic Cough</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-md">Persistent dry cough for 6 weeks, worse at night. Nonsmoker. Recent URI.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+<span class="font-status text-status">Est. 10m</span>
+</div>
+<span class="font-status text-status text-secondary font-semibold group-hover:translate-x-1 transition-transform">Start →</span>
+</div>
+</div>
+<!-- Case Card 4 -->
+<div class="bg-surface rounded-xl border border-outline-variant soft-medical-shadow p-md flex flex-col gap-sm hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="bg-surface-container-high text-on-surface font-status text-status px-sm py-[2px] rounded-full border border-outline-variant">Gastroenterology</div>
+<span class="bg-surface-variant text-on-surface font-status text-status px-sm py-[2px] rounded-full">Medium</span>
+</div>
+<h4 class="font-h3 text-h3 text-on-surface group-hover:text-secondary transition-colors">45-M LLQ Pain</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-md">Progressive lower left quadrant abdominal pain, fever, and altered bowel habits.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-sm">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+<span class="font-status text-status">Est. 18m</span>
+</div>
+<span class="font-status text-status text-secondary font-semibold group-hover:translate-x-1 transition-transform">Start →</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

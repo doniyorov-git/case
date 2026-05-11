@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MEDCASE - Master Clinical Reasoning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#7c839b",
+                      "on-error": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "tertiary-fixed-dim": "#6bd8cb",
+                      "on-secondary-container": "#fefcff",
+                      "tertiary-container": "#00201d",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-fixed": "#89f5e7",
+                      "on-tertiary-fixed-variant": "#005049",
+                      "outline": "#76777d",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#316bf3",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#bec6e0",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-low": "#eff4ff",
+                      "on-primary-fixed": "#131b2e",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-surface-variant": "#45464d",
+                      "surface-bright": "#f8f9ff",
+                      "outline-variant": "#c6c6cd",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "surface-dim": "#cbdbf5",
+                      "surface-variant": "#d3e4fe",
+                      "surface": "#f8f9ff",
+                      "inverse-surface": "#213145",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed": "#00174b",
+                      "primary-fixed": "#dae2fd",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "secondary": "#0051d5",
+                      "secondary-fixed": "#dbe1ff",
+                      "primary": "#000000",
+                      "primary-container": "#131b2e",
+                      "tertiary": "#000000",
+                      "inverse-primary": "#bec6e0",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "on-tertiary-fixed": "#00201d",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#565e74",
+                      "on-tertiary-container": "#0c9488"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "container-max": "1440px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "40px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "h3": [
+                              "Manrope"
+                      ],
+                      "h2": [
+                              "Manrope"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "status": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "status": [
+                              "13px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .soft-medical-shadow {
+            box-shadow: 0 4px 20px rgba(0, 81, 213, 0.04);
+        }
+        
+        .btn-primary-glow {
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 2px 4px rgba(0, 81, 213, 0.2);
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background antialiased font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-lg py-sm sticky top-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant shadow-sm transition-all duration-300">
+<div class="flex items-center gap-md">
+<img alt="MEDCASE Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC30SCEFMHB6wY78_5KYxcJelG5UgBqFb-175F70qPHLf2DNu6I7mXmC1AWO8pbf-1jdMusgnbbErlD1nabXkZ7eW-THrGsEW8pN7IF8MJVRCPUBaz8_vqHqjNi30hiNKKYbqCMAObQ3byQvs4xHfhfrlzcYZNvhj7wd7UyrcZdMY0n_Y_boAmldy4e8Bf1CWHvS0xu0ESgD5reasgj_AmTSzY_D0I05KLBykS9Uuuy46m3kHvMVUgAti3g44-f7zxWJDlAPuJlNx0"/>
+<span class="font-h1 text-h1 font-bold tracking-tight text-secondary">MEDCASE</span>
+</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200" href="#">Products</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200" href="#">Solutions</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200" href="#">Pricing</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200" href="#">Resources</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-secondary transition-colors hidden sm:block font-body-md">Login</button>
+<button class="bg-secondary text-on-secondary px-md py-sm rounded-lg font-body-md hover:bg-on-secondary-fixed-variant transition-colors btn-primary-glow active:scale-95 duration-200">Start Free Trial</button>
+</div>
+</header>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
+<!-- Decorative Background Elements -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-surface-container-high/50 blur-3xl opacity-60"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary-fixed/30 blur-3xl opacity-50"></div>
+</div>
+<div class="container mx-auto px-lg md:px-xl relative z-10 max-w-container-max flex flex-col lg:flex-row items-center gap-xl">
+<div class="w-full lg:w-1/2 flex flex-col items-start gap-lg">
+<div class="inline-flex items-center gap-sm px-sm py-xs bg-surface-container-low rounded-full border border-outline-variant/50">
+<span class="bg-secondary text-on-secondary font-label-caps text-label-caps px-2 py-1 rounded-full">NEW</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant pr-2">Advanced Trauma Module Released</span>
+</div>
+<h1 class="font-display text-display text-on-background leading-tight">
+                        Master Clinical Reasoning with <span class="text-secondary">High-Fidelity Simulation</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Elevate diagnostic accuracy and decision-making skills through immersive, real-world patient scenarios designed for medical professionals and institutions.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-md mt-sm w-full sm:w-auto">
+<button class="bg-secondary text-on-secondary px-xl py-md rounded-lg font-body-lg hover:bg-on-secondary-fixed-variant transition-colors btn-primary-glow flex items-center justify-center gap-sm w-full sm:w-auto active:scale-95 duration-200">
+                            Start Free Trial
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="bg-surface text-on-surface border border-outline-variant px-xl py-md rounded-lg font-body-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-sm w-full sm:w-auto active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+                            View Demo
+                        </button>
+</div>
+<div class="mt-lg flex items-center gap-md text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex -space-x-2">
+<img alt="Doctor profile" class="w-8 h-8 rounded-full border-2 border-surface object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYxEGuD5DbXs_Y9BauGBtc0TqCSZ3CKaOl6jdrqX6q_g0-MorLRFCLvyNnQtRe4eZCzW_C5h0ySUJHj85gPgUJBrHdPyD-37d6tbWVk3NClZhzs88bMSeFkaQ9J_CaqIMhANY_cGyclcSZWPu3I-RGihuauqnwUKcjJkMMn8lEUbzQPvBCdFNT1yYC3qLHy5QXUMvcelL_hy7JwilBvI3Io7W8gKU42O94a-TaH9pUG7N3jBWyMuWm_47trLtMG0nmh7bPSjdDfgg"/>
+<img alt="Doctor profile" class="w-8 h-8 rounded-full border-2 border-surface object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtHzfubRTDJtvCp0bVzWPGnP7Y7YBhhcQuCy_9-nastgESvLGxXZqVL3C0lufuedMOkxg7Z7LpA_GD0D1mv9I6lUOX3OpWj3fdpsmq595C2XTBoEkqJb1U8Nrgr5O29Ca3El7M-xFpgTzMy4GrJ9TyVGk3iz-G_zb_ho-ai6mnrTGwzzeBwcXjFaLakqsuZ0_xGHYFeUOvQ6aOYfbWNLWWlbAyLIH7o7mJpi4wLNRGpzOCycUq3QyRt1yeVaGXWfiLpXg3HpCtT08"/>
+<img alt="Doctor profile" class="w-8 h-8 rounded-full border-2 border-surface object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtvG0e9A3fghs3V05Js6ypF4_Zcm_-VHqLztmsGHvH-G89QgLrgi9A24ArdTvWLPvQtBfL9JhPiG4RuwACyJBiZ9lFuGU9FmYnG3duw-auCzJwNuGZMXbATJ2ezyAbpfLIVj7g8sPahTW40BXv1E07B0ZzHOY_81mWyL6xMzmVNIE0_uACRpAaUfYQ7NRVx_ueJqqFz4i4JZ0ac6jwRsJgptbxJojeVh5TW3y0Z2c6AJJhhXZ9l0_NmQOUtZdH6y4S2_Q1gIKdBBU"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-xs text-on-surface-variant">+2k</div>
+</div>
+<span>Trusted by leading medical institutions worldwide</span>
+</div>
+</div>
+<!-- Hero Image/UI Mockup -->
+<div class="w-full lg:w-1/2 relative mt-xl lg:mt-0">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden glass-panel soft-medical-shadow p-2">
+<div class="w-full h-full bg-surface-container-lowest rounded-lg border border-outline-variant/30 overflow-hidden relative">
+<!-- Header of mockup -->
+<div class="w-full h-12 bg-surface flex items-center px-md border-b border-outline-variant/30 gap-sm">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error/80"></div>
+<div class="w-3 h-3 rounded-full bg-surface-tint/80"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-container/80"></div>
+</div>
+<div class="mx-auto w-1/2 h-6 bg-surface-container-low rounded flex items-center justify-center">
+<span class="text-[10px] text-on-surface-variant font-label-caps">CASE: 42M - ACUTE CHEST PAIN</span>
+</div>
+</div>
+<!-- Content of mockup -->
+<div class="flex h-[calc(100%-3rem)]">
+<!-- Sidebar -->
+<div class="w-16 md:w-48 border-r border-outline-variant/30 bg-surface-container-low/50 p-sm flex flex-col gap-sm">
+<div class="h-8 rounded bg-secondary-container/50 flex items-center px-sm gap-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">monitor_heart</span>
+<span class="hidden md:block text-xs font-semibold text-secondary">Vitals</span>
+</div>
+<div class="h-8 rounded hover:bg-surface-container-high/50 flex items-center px-sm gap-sm cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">biotech</span>
+<span class="hidden md:block text-xs text-on-surface-variant">Labs</span>
+</div>
+<div class="h-8 rounded hover:bg-surface-container-high/50 flex items-center px-sm gap-sm cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">medical_information</span>
+<span class="hidden md:block text-xs text-on-surface-variant">History</span>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 p-md flex flex-col gap-md bg-surface-bright">
+<div class="flex gap-md">
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-sm shadow-sm">
+<div class="text-[10px] font-label-caps text-on-surface-variant mb-1">HEART RATE</div>
+<div class="text-2xl font-display text-on-surface flex items-baseline gap-1">112 <span class="text-xs text-on-surface-variant font-body-sm">bpm</span></div>
+<div class="w-full h-1 bg-error-container mt-2 rounded-full overflow-hidden">
+<div class="w-[80%] h-full bg-error"></div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-sm shadow-sm">
+<div class="text-[10px] font-label-caps text-on-surface-variant mb-1">BLOOD PRESSURE</div>
+<div class="text-2xl font-display text-on-surface flex items-baseline gap-1">145/90 <span class="text-xs text-on-surface-variant font-body-sm">mmHg</span></div>
+<div class="w-full h-1 bg-surface-container-high mt-2 rounded-full overflow-hidden">
+<div class="w-[60%] h-full bg-secondary"></div>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md shadow-sm relative overflow-hidden">
+<div class="text-[10px] font-label-caps text-on-surface-variant mb-2">ECG MONITOR (LEAD II)</div>
+<div class="w-full h-full border-t border-b border-surface-container-high relative flex items-center opacity-70">
+<!-- Simplified ECG Path representation -->
+<svg class="w-full h-16 text-secondary" fill="none" preserveaspectratio="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 100 20">
+<path d="M0 10 L10 10 L12 8 L14 12 L16 10 L30 10 L32 2 L34 18 L36 10 L50 10 L55 5 L60 10 L100 10" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -right-4 top-12 bg-surface-container-lowest border border-outline-variant p-sm rounded-lg shadow-md flex items-center gap-sm animate-bounce" style="animation-duration: 3s;">
+<div class="w-8 h-8 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">check_circle</span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Diagnosis Correct</div>
+<div class="text-[10px] text-on-surface-variant">Time: 4m 12s</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid Section -->
+<section class="py-24 bg-surface-container-low/30 relative">
+<div class="container mx-auto px-lg md:px-xl max-w-container-max">
+<div class="text-center mb-16 max-w-3xl mx-auto">
+<h2 class="font-h2 text-h2 text-on-background mb-sm">Comprehensive Simulation Environment</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Experience a fully integrated clinical workspace designed to mirror real-world diagnostic workflows and pressure.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg auto-rows-[300px]">
+<!-- Feature 1: Large -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-xl soft-medical-shadow flex flex-col justify-between group hover:border-secondary/30 transition-colors">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[24px] text-on-surface group-hover:text-on-secondary-container">neurology</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Interactive Patient Cases</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Navigate complex, evolving scenarios with branching logic. Every decision impacts patient vitals and outcomes in real-time.</p>
+</div>
+<div class="mt-auto flex justify-end">
+<img class="w-48 h-32 object-cover rounded-lg border border-outline-variant/30 opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A modern, high-tech medical dashboard interface displayed on a tablet screen. The interface features complex medical data, including graphs and charts, in a clean light-mode aesthetic. The color palette includes deep navy blues, pristine whites, and vibrant teal accents. The overall mood is professional, analytical, and advanced, conveying a sense of cutting-edge clinical technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuwNtijYBCTGBZqXcapD8pq3jmMTOSlZHm7h9QwPl0uM76zWUqMlzwoS9hJp0wheSzR2iUNWXWIWClFjM3r6y4Qe6R_yFA9yfBxlRG07dK86iWgJseqYELlzl0ejW9ACBmk1h8L9Un5d97KyI9NIL6OaL-JR8MEhyU9N-XjeTpZdWI43Zx0pvwfHnsoozY65G9syTEsc9h5VIqIUZ-Jgp9I9UO5VHL8OSywOUqywVXVZKSNuVpgP2u07fY5Oipj_NgVZyhKZi-WdU"/>
+</div>
+</div>
+<!-- Feature 2: Tall -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-xl soft-medical-shadow flex flex-col group hover:border-secondary/30 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[24px] text-on-surface group-hover:text-on-secondary-container">science</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Real-time Investigations</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Order and interpret labs, imaging, and physical exams with realistic delays and costs.</p>
+<div class="mt-auto pt-lg">
+<div class="space-y-sm">
+<div class="flex justify-between items-center bg-surface-container-low p-sm rounded border border-outline-variant/30">
+<span class="text-xs font-semibold text-on-surface">CBC Panel</span>
+<span class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">Completed</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-low p-sm rounded border border-outline-variant/30">
+<span class="text-xs font-semibold text-on-surface">Chest X-Ray</span>
+<span class="text-[10px] bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded">Pending (2m)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-xl soft-medical-shadow flex flex-col group hover:border-secondary/30 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[24px] text-on-surface group-hover:text-on-secondary-container">analytics</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Detailed Metrics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Track diagnostic accuracy, time-to-treatment, and cost-effectiveness with comprehensive debriefings.</p>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-xl soft-medical-shadow flex flex-col sm:flex-row items-center gap-xl group hover:border-secondary/30 transition-colors">
+<div class="flex-1">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[24px] text-on-surface group-hover:text-on-secondary-container">group</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Institutional Analytics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Powerful dashboards for educators to monitor cohort performance, identify knowledge gaps, and tailor curriculum.</p>
+</div>
+<div class="w-full sm:w-48 aspect-square rounded-full border-4 border-surface-container-high relative flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full text-secondary" viewbox="0 0 36 36">
+<path class="stroke-current text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="75, 100" stroke-width="3"></path>
+</svg>
+<div class="text-center">
+<div class="font-display text-2xl text-on-surface">85%</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant">DIAGNOSTIC<br/>ACCURACY</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-surface-bright border-t border-outline-variant/30">
+<div class="container mx-auto px-lg md:px-xl max-w-4xl text-center">
+<h2 class="font-display text-4xl text-on-background mb-md">Ready to Elevate Clinical Training?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-2xl mx-auto">Join thousands of medical professionals using MEDCASE to sharpen their diagnostic skills and improve patient outcomes.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-md">
+<button class="bg-secondary text-on-secondary px-xl py-md rounded-lg font-body-lg hover:bg-on-secondary-fixed-variant transition-colors btn-primary-glow flex items-center justify-center gap-sm active:scale-95 duration-200">
+                        Start Your Free Trial
+                    </button>
+<button class="bg-surface text-on-surface border border-outline-variant px-xl py-md rounded-lg font-body-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-sm active:scale-95 duration-200">
+                        Contact Sales
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant py-xl">
+<div class="container mx-auto px-lg md:px-xl max-w-container-max flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex items-center gap-sm">
+<img alt="MEDCASE Logo" class="h-6 w-auto object-contain grayscale opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC30SCEFMHB6wY78_5KYxcJelG5UgBqFb-175F70qPHLf2DNu6I7mXmC1AWO8pbf-1jdMusgnbbErlD1nabXkZ7eW-THrGsEW8pN7IF8MJVRCPUBaz8_vqHqjNi30hiNKKYbqCMAObQ3byQvs4xHfhfrlzcYZNvhj7wd7UyrcZdMY0n_Y_boAmldy4e8Bf1CWHvS0xu0ESgD5reasgj_AmTSzY_D0I05KLBykS9Uuuy46m3kHvMVUgAti3g44-f7zxWJDlAPuJlNx0"/>
+<span class="font-h3 text-h3 text-on-surface-variant font-bold tracking-tight">MEDCASE</span>
+</div>
+<div class="text-on-surface-variant font-body-sm text-sm">
+                © 2024 MEDCASE Simulation Systems. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

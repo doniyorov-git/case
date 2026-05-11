@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MEDCASE Admin - Clinical Content Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#bec6e0",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#316bf3",
+                      "surface-container-low": "#eff4ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#131b2e",
+                      "on-surface-variant": "#45464d",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-variant": "#d3e4fe",
+                      "surface-bright": "#f8f9ff",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "outline-variant": "#c6c6cd",
+                      "on-error": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "on-primary-container": "#7c839b",
+                      "tertiary-container": "#00201d",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#6bd8cb",
+                      "on-secondary-container": "#fefcff",
+                      "outline": "#76777d",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-fixed": "#89f5e7",
+                      "on-tertiary-fixed-variant": "#005049",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#000000",
+                      "inverse-primary": "#bec6e0",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "on-tertiary-fixed": "#00201d",
+                      "surface-tint": "#565e74",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#0c9488",
+                      "on-background": "#0b1c30",
+                      "surface": "#f8f9ff",
+                      "inverse-surface": "#213145",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed": "#00174b",
+                      "on-tertiary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-surface": "#0b1c30",
+                      "primary-container": "#131b2e",
+                      "secondary-fixed": "#dbe1ff",
+                      "secondary": "#0051d5",
+                      "primary": "#000000"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "xl": "40px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "unit": "4px",
+                      "container-max": "1440px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display": ["Manrope"],
+                      "h3": ["Manrope"],
+                      "h2": ["Manrope"],
+                      "status": ["Inter"],
+                      "body-md": ["Inter"],
+                      "h1": ["Manrope"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "status": ["13px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .medical-shadow {
+            box-shadow: 0 4px 20px rgba(11, 28, 48, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- AdminSideNav -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 flex flex-col py-md bg-surface-container-lowest border-r border-outline-variant">
+<div class="px-md mb-xl">
+<h2 class="font-display text-h3 font-bold text-on-surface">MEDCASE Admin</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Clinical Intelligence</p>
+</div>
+<nav class="flex-1 space-y-unit px-sm">
+<!-- Content Tab is Active -->
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">User Management</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm bg-surface-container-high text-secondary border-r-4 border-secondary font-bold translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-caps text-label-caps">Content</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="font-label-caps text-label-caps">Resources</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-label-caps text-label-caps">Notifications</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="px-sm mt-auto border-t border-outline-variant pt-md">
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-caps text-label-caps">Help Center</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<div class="pl-64 min-h-screen flex flex-col">
+<!-- AdminHeader -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg h-16 bg-surface-bright border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="pl-10 pr-md py-sm bg-surface-container-low border-none rounded-lg text-body-sm w-80 focus:ring-2 focus:ring-secondary" placeholder="Search cases..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container-low p-sm rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container-low p-sm rounded-full transition-colors">settings</button>
+<div class="flex items-center gap-sm border-l border-outline-variant pl-lg">
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-primary">Dr. Sarah Chen</p>
+<p class="text-[10px] text-on-surface-variant">System Admin</p>
+</div>
+<img alt="Administrator Avatar" class="w-10 h-10 rounded-full border-2 border-secondary/20" data-alt="A professional headshot of a female physician in her late 30s wearing a clean white lab coat and a stethoscope. She has a confident, warm expression suitable for a clinical intelligence platform. The lighting is soft and professional with a neutral, bright background that fits a modern corporate medical UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACKwliDKHJVxGw_9Qkc3QRJIdOJ0CVRdSVugRkb4Ilg0ad7I7gRigbmc3r9gd2Fl-XDCDBDCiH4qK7SiOmq2qpFoTeoK5ScUJAtnAigQcbVBlRUBMNv62L5U_hsxSXT0VtCdHJBvFemTNuK1rng87eNCjJLqzoaPYXvy3ztdg4hYmsJGgQeo7O6X33sA0cRcdgWj_qc0U86_0jE1jXVhhIz1_V5coWao2hUqF6rRfUfMiKOogTH5ILQUyZ3DlH78h9_gc96BQpmdo"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-xl">
+<!-- Dashboard Header Section -->
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h1 class="font-display text-h1 text-primary">Clinical Case Management</h1>
+<p class="font-body-md text-on-surface-variant mt-xs">Curate and publish high-fidelity clinical simulations for medical training.</p>
+</div>
+<button class="bg-secondary text-on-secondary px-lg py-md rounded-lg font-label-caps text-label-caps flex items-center gap-sm hover:brightness-110 shadow-sm transition-all active:scale-[0.98]" onclick="document.getElementById('editor-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Create Case
+                </button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-4 gap-gutter mb-xl">
+<div class="bg-white border border-outline-variant p-md rounded-xl medical-shadow">
+<div class="flex items-center gap-sm text-outline mb-sm">
+<span class="material-symbols-outlined text-secondary">clinical_notes</span>
+<span class="font-label-caps text-label-caps">Total Cases</span>
+</div>
+<p class="font-display text-h2 text-primary">1,284</p>
+</div>
+<div class="bg-white border border-outline-variant p-md rounded-xl medical-shadow">
+<div class="flex items-center gap-sm text-outline mb-sm">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">verified</span>
+<span class="font-label-caps text-label-caps">Published</span>
+</div>
+<p class="font-display text-h2 text-primary">856</p>
+</div>
+<div class="bg-white border border-outline-variant p-md rounded-xl medical-shadow">
+<div class="flex items-center gap-sm text-outline mb-sm">
+<span class="material-symbols-outlined text-on-surface-variant">edit_square</span>
+<span class="font-label-caps text-label-caps">Drafts</span>
+</div>
+<p class="font-display text-h2 text-primary">392</p>
+</div>
+<div class="bg-white border border-outline-variant p-md rounded-xl medical-shadow">
+<div class="flex items-center gap-sm text-outline mb-sm">
+<span class="material-symbols-outlined text-error">archive</span>
+<span class="font-label-caps text-label-caps">Archived</span>
+</div>
+<p class="font-display text-h2 text-primary">36</p>
+</div>
+</div>
+<!-- Bento Grid - Clinical Cases -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Main Case Table Container -->
+<div class="col-span-12 lg:col-span-9 bg-white border border-outline-variant rounded-xl medical-shadow overflow-hidden">
+<div class="bg-surface-container-low px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-h3 text-h3 text-primary">Active Case Repository</h3>
+<div class="flex items-center gap-sm">
+<button class="p-xs hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-outline">filter_list</span></button>
+<button class="p-xs hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-outline">sort</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-bright border-b border-outline-variant">
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Case Title</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Specialty</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Difficulty</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-body-md text-primary font-bold">Acute Coronary Syndrome in 54M</span>
+<span class="text-[12px] text-on-surface-variant">ID: CAS-2024-001</span>
+</div>
+</td>
+<td class="px-lg py-md"><span class="bg-surface-container-high text-on-primary-container px-sm py-xs rounded text-[12px] font-bold">CARDIOLOGY</span></td>
+<td class="px-lg py-md">
+<div class="flex gap-xs">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="font-status text-status ml-xs text-on-surface-variant">Intermediate</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-md py-xs rounded-full font-status text-status">Published</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-outline hover:text-secondary">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-secondary">more_vert</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-body-md text-primary font-bold">Pediatric Type 1 Diabetes Onset</span>
+<span class="text-[12px] text-on-surface-variant">ID: CAS-2024-002</span>
+</div>
+</td>
+<td class="px-lg py-md"><span class="bg-surface-container-high text-on-primary-container px-sm py-xs rounded text-[12px] font-bold">PEDIATRICS</span></td>
+<td class="px-lg py-md">
+<div class="flex gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="font-status text-status ml-xs text-on-surface-variant">Easy</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="bg-surface-container-highest text-on-surface-variant px-md py-xs rounded-full font-status text-status">Draft</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-outline hover:text-secondary">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-secondary">more_vert</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-body-md text-primary font-bold">Complex Multi-trauma ER Response</span>
+<span class="text-[12px] text-on-surface-variant">ID: CAS-2024-003</span>
+</div>
+</td>
+<td class="px-lg py-md"><span class="bg-surface-container-high text-on-primary-container px-sm py-xs rounded text-[12px] font-bold">EMERGENCY</span></td>
+<td class="px-lg py-md">
+<div class="flex gap-xs">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-status text-status ml-xs text-on-surface-variant">Hard</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-md py-xs rounded-full font-status text-status">Published</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-outline hover:text-secondary">edit</button>
+<button class="material-symbols-outlined text-outline hover:text-secondary">more_vert</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column: Sidebar Actions -->
+<div class="col-span-12 lg:col-span-3 space-y-gutter">
+<!-- Media Library Quick View -->
+<div class="bg-white border border-outline-variant rounded-xl medical-shadow overflow-hidden">
+<div class="bg-surface-container-low px-md py-sm border-b border-outline-variant">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Asset Library</h4>
+</div>
+<div class="p-md grid grid-cols-2 gap-sm">
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden relative group cursor-pointer">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida/ADBb0ui2fzoIDDlpjX2flxHO7KYmKpZykc64zX158TDg4wzkYH0wg4lsbZ1Le24X8N1wom2dAaIj366sDsVfIqL9ekznnnJ9SFr53SgnLrlLvXkJeMkXy9ZbgTfln4J59O3XC1gv6Wgcxw6iGrKfZfItEMsOcD5woukYFCuy23oJ1Y8gSnxPo7M4pAieI1TF-HeEic4Mob3tn4IGx8jJEE9xbpt3YOKVjGQdXrt9VPdr4Wad3vc0uSAMKZPRbg"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<div class="aspect-square bg-surface-container rounded-lg flex items-center justify-center border-2 border-dashed border-outline-variant text-outline hover:border-secondary hover:text-secondary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[32px]">add_photo_alternate</span>
+</div>
+</div>
+<div class="p-md border-t border-outline-variant">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-xs">STORAGE USED</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-3/4"></div>
+</div>
+<p class="text-right font-body-sm text-[11px] text-on-surface-variant mt-xs">15.4 GB / 20 GB</p>
+</div>
+</div>
+<!-- Category Management -->
+<div class="bg-white border border-outline-variant rounded-xl medical-shadow overflow-hidden">
+<div class="bg-surface-container-low px-md py-sm border-b border-outline-variant">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Top Specialties</h4>
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Internal Medicine</span>
+<span class="font-bold text-primary">242</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Surgery</span>
+<span class="font-bold text-primary">186</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Neurology</span>
+<span class="font-bold text-primary">124</span>
+</div>
+<button class="w-full mt-md py-xs text-secondary font-label-caps text-label-caps hover:underline">Manage All Categories</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- CREATE CASE MODAL (Editor Layout) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-xl hidden" id="editor-modal">
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-md"></div>
+<div class="relative glass-card w-full max-w-6xl h-full max-h-[90vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl border border-white/40">
+<!-- Modal Header -->
+<div class="flex justify-between items-center px-lg py-md bg-white border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="bg-secondary text-on-secondary p-sm rounded-lg material-symbols-outlined">edit_square</span>
+<div>
+<h2 class="font-display text-h2 text-primary leading-tight">Create Clinical Case</h2>
+<p class="font-body-sm text-on-surface-variant">Drafting new simulation for Medical Intelligence Engine</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-md py-sm text-on-surface-variant hover:text-primary font-label-caps text-label-caps">Save Draft</button>
+<button class="bg-secondary text-on-secondary px-lg py-sm rounded-lg font-label-caps text-label-caps shadow-lg hover:brightness-110">Publish Case</button>
+<button class="p-sm text-outline hover:text-error transition-colors material-symbols-outlined" onclick="document.getElementById('editor-modal').classList.add('hidden')">close</button>
+</div>
+</div>
+<!-- Modal Content (Editor) -->
+<div class="flex-1 overflow-y-auto p-lg flex gap-lg">
+<!-- Left Form Column -->
+<div class="flex-[2] space-y-lg">
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Case Title</label>
+<input class="w-full px-md py-sm rounded-lg border-outline-variant focus:ring-2 focus:ring-secondary text-body-md font-bold text-primary placeholder:text-outline-variant" placeholder="e.g. 62Y Female with Progressive Dyspnea" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Specialty</label>
+<select class="w-full px-md py-sm rounded-lg border-outline-variant focus:ring-2 focus:ring-secondary text-body-sm">
+<option>Select Specialty...</option>
+<option>Cardiology</option>
+<option>Neurology</option>
+<option>Pulmonology</option>
+</select>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Difficulty Level</label>
+<div class="flex gap-sm p-unit bg-surface-container rounded-lg">
+<button class="flex-1 py-xs text-label-caps text-on-surface-variant rounded hover:bg-white hover:shadow-sm transition-all">Novice</button>
+<button class="flex-1 py-xs text-label-caps bg-white text-secondary shadow-sm rounded">Intermediate</button>
+<button class="flex-1 py-xs text-label-caps text-on-surface-variant rounded hover:bg-white hover:shadow-sm transition-all">Expert</button>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Clinical History (Rich Text)</label>
+<div class="border border-outline-variant rounded-xl overflow-hidden bg-white">
+<div class="bg-surface-container-low px-md py-sm border-b border-outline-variant flex gap-md">
+<button class="material-symbols-outlined text-outline">format_bold</button>
+<button class="material-symbols-outlined text-outline">format_italic</button>
+<button class="material-symbols-outlined text-outline">format_list_bulleted</button>
+<div class="w-[1px] h-4 bg-outline-variant self-center"></div>
+<button class="material-symbols-outlined text-outline">add_link</button>
+<button class="material-symbols-outlined text-outline">medical_services</button>
+</div>
+<textarea class="w-full p-md border-none focus:ring-0 text-body-md leading-relaxed" placeholder="Patient presents with persistent chest pain for the last 4 hours, radiating to the left shoulder..." rows="10"></textarea>
+</div>
+</div>
+</div>
+<!-- Right Context/Media Column -->
+<div class="flex-1 space-y-lg">
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Patient Scans &amp; Media</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center text-center bg-surface-container-low hover:border-secondary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-[48px] text-outline group-hover:text-secondary mb-sm">upload_file</span>
+<p class="font-body-sm text-on-surface-variant">Drag scans here or <span class="text-secondary font-bold">browse</span></p>
+<p class="text-[10px] text-outline mt-xs">Supports DICOM, JPEG, MP4</p>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Metadata Tags</label>
+<div class="flex flex-wrap gap-xs">
+<span class="bg-surface-container-high text-on-primary-container px-sm py-xs rounded-full text-[11px] font-bold flex items-center gap-xs">
+                                #Hypertrophy <button class="material-symbols-outlined text-[14px]">close</button>
+</span>
+<span class="bg-surface-container-high text-on-primary-container px-sm py-xs rounded-full text-[11px] font-bold flex items-center gap-xs">
+                                #Emergency <button class="material-symbols-outlined text-[14px]">close</button>
+</span>
+<button class="border border-outline-variant text-outline px-sm py-xs rounded-full text-[11px] font-bold hover:bg-surface-container-low">
+                                + Add Tag
+                            </button>
+</div>
+</div>
+<div class="p-md bg-secondary-container/10 border border-secondary-container/20 rounded-xl">
+<h5 class="font-label-caps text-[10px] text-secondary mb-sm tracking-widest uppercase">Simulation Preview</h5>
+<div class="aspect-video bg-inverse-surface rounded flex items-center justify-center relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-50" data-alt="A futuristic medical monitoring interface with dynamic waveforms and anatomical clinical data. The visual style uses technical glassmorphism with deep navy and royal blue accents, illuminated by subtle cyan glow. The overall feeling is one of high-precision diagnostic software for advanced clinical simulations." src="https://lh3.googleusercontent.com/aida/ADBb0ui2fzoIDDlpjX2flxHO7KYmKpZykc64zX158TDg4wzkYH0wg4lsbZ1Le24X8N1wom2dAaIj366sDsVfIqL9ekznnnJ9SFr53SgnLrlLvXkJeMkXy9ZbgTfln4J59O3XC1gv6Wgcxw6iGrKfZfItEMsOcD5woukYFCuy23oJ1Y8gSnxPo7M4pAieI1TF-HeEic4Mob3tn4IGx8jJEE9xbpt3YOKVjGQdXrt9VPdr4Wad3vc0uSAMKZPRbg"/>
+<span class="material-symbols-outlined text-white text-[48px] relative z-10">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

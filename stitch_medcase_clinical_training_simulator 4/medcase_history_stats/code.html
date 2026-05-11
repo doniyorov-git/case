@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MEDCASE - Progress and History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#7c839b",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "on-secondary-container": "#fefcff",
+                        "tertiary-container": "#00201d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed": "#89f5e7",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "outline": "#76777d",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#316bf3",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-variant": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#00174b",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "secondary": "#0051d5",
+                        "secondary-fixed": "#dbe1ff",
+                        "primary": "#000000",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-container": "#0c9488"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Manrope"],
+                        "body-sm": ["Inter"],
+                        "status": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h3": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "status": ["13px", { "lineHeight": "1", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 text-secondary dark:text-secondary-fixed-dim docked full-width top-0 backdrop-blur-xl border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center w-full px-lg py-sm sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<div class="font-h1 text-h1 font-bold tracking-tight text-secondary dark:text-secondary-fixed-dim flex items-center gap-sm">
+<span class="material-symbols-outlined text-3xl">neurology</span>
+                MEDCASE
+            </div>
+<nav class="hidden md:flex gap-lg ml-xl">
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 active:opacity-70 transition-all" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 active:opacity-70 transition-all" href="#">Cases</a>
+<a class="text-secondary dark:text-secondary-fixed-dim border-b-2 border-secondary dark:border-secondary-fixed-dim pb-1 font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 active:opacity-70 transition-all" href="#">Progress</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-body-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 active:opacity-70 transition-all" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button aria-label="dark_mode" class="p-2 rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button aria-label="notifications" class="p-2 rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="Dr. Julian Vane" class="w-10 h-10 rounded-full border border-outline-variant ml-sm" data-alt="A professional headshot of a male doctor in a bright, modern clinical setting. High-key lighting, clean aesthetic. The doctor looks approachable and competent. The image should convey trust and medical authority in a contemporary healthcare environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9-VoDQJshrQRH-gbh56IvIeGXDLQwbmLIVwgfq6oYcHTgZe8SS3ehmvCVmaila-9XoOXOkaaBE5-qX-dax9Lzjo33VSacX__JlFB0izWezi3nLPqE2DLtccn8395zsPaA6XOaNLF4U1_qTGYVADUAAEE8ZWk8aexFf4uPpSM63BZ_OH84cKwxP6gu28FIYIwJ3vKlzK7IdJitWlwPHSkRI5KSc1AqfT8Js0V8F2K_k3OBOGNdt_56OkJUI9sT0VGEgFPKMVXbYwI"/>
+</div>
+</header>
+<main class="flex-grow container mx-auto max-w-container-max px-lg py-xl flex flex-col gap-xl">
+<!-- Page Header -->
+<div class="flex flex-col gap-sm">
+<h1 class="font-display text-display text-on-surface">Progress &amp; History</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Review your clinical performance, track streaks, and analyze historical case data.</p>
+</div>
+<!-- Bento Grid Top Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Streaks & Level -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-lg flex flex-col justify-between">
+<div>
+<h2 class="font-h3 text-h3 text-on-surface mb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">emoji_events</span>
+                        Current Status
+                    </h2>
+<div class="flex items-end gap-md mb-lg">
+<span class="font-display text-display text-secondary">Lvl 14</span>
+<span class="font-body-md text-body-md text-on-surface-variant mb-2">Attending</span>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant">
+<span>XP Progress</span>
+<span>4,250 / 5,000</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-tertiary-container h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<div class="bg-error-container text-error p-2 rounded-lg">
+<span class="material-symbols-outlined fill">local_fire_department</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Current Streak</div>
+<div class="font-h2 text-h2 text-on-surface">12 Days</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Analytics: Strengths -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex flex-col">
+<div class="bg-surface-container-low px-lg py-sm border-b border-outline-variant rounded-t-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">trending_up</span>
+<h3 class="font-status text-status text-on-surface-variant uppercase tracking-wider">Top Specialties</h3>
+</div>
+<div class="p-lg flex-grow flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-container">cardiology</span>
+<span class="font-body-md text-body-md text-on-surface">Cardiology</span>
+</div>
+<span class="font-status text-status text-on-tertiary-container bg-tertiary-fixed px-2 py-1 rounded">94%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 mb-sm">
+<div class="bg-tertiary-container h-1.5 rounded-full" style="width: 94%"></div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">pulmonology</span>
+<span class="font-body-md text-body-md text-on-surface">Pulmonology</span>
+</div>
+<span class="font-status text-status text-on-secondary-container bg-secondary-fixed px-2 py-1 rounded">88%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 mb-sm">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">neurology</span>
+<span class="font-body-md text-body-md text-on-surface">Neurology</span>
+</div>
+<span class="font-status text-status text-on-surface-variant bg-surface-variant px-2 py-1 rounded">82%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5">
+<div class="bg-surface-tint h-1.5 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+</div>
+<!-- Analytics: Areas for Improvement -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex flex-col">
+<div class="bg-surface-container-low px-lg py-sm border-b border-outline-variant rounded-t-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">trending_down</span>
+<h3 class="font-status text-status text-on-surface-variant uppercase tracking-wider">Focus Areas</h3>
+</div>
+<div class="p-lg flex-grow flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">gastroenterology</span>
+<span class="font-body-md text-body-md text-on-surface">Gastroenterology</span>
+</div>
+<span class="font-status text-status text-error bg-error-container px-2 py-1 rounded">65%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 mb-sm">
+<div class="bg-error h-1.5 rounded-full" style="width: 65%"></div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">endocrinology</span>
+<span class="font-body-md text-body-md text-on-surface">Endocrinology</span>
+</div>
+<span class="font-status text-status text-error bg-error-container px-2 py-1 rounded">71%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5">
+<div class="bg-error h-1.5 rounded-full" style="width: 71%"></div>
+</div>
+<div class="mt-auto pt-sm">
+<button class="w-full bg-surface-container-high text-on-surface font-status text-status py-2 rounded-lg border border-outline-variant hover:bg-surface-variant transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-sm">school</span>
+                            Review Recommended Cases
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- History Data Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="bg-surface-container-low px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-h3 text-h3 text-on-surface">Case History</h3>
+<div class="flex gap-sm">
+<button class="px-md py-1 border border-outline-variant rounded text-on-surface-variant font-status text-status hover:bg-surface-variant transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                    </button>
+<button class="px-md py-1 border border-outline-variant rounded text-on-surface-variant font-status text-status hover:bg-surface-variant transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">download</span> Export
+                    </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant">
+<th class="py-md px-lg font-semibold">Case Title</th>
+<th class="py-md px-lg font-semibold">Specialty</th>
+<th class="py-md px-lg font-semibold">Date Completed</th>
+<th class="py-md px-lg font-semibold">Score</th>
+<th class="py-md px-lg font-semibold">Status</th>
+<th class="py-md px-lg font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-lg font-medium">54-M Acute Chest Pain</td>
+<td class="py-md px-lg">Cardiology</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 24, 2023</td>
+<td class="py-md px-lg font-semibold text-tertiary-container">98%</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-container font-status text-status">
+<span class="material-symbols-outlined text-xs">check_circle</span> Mastered
+                                </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-secondary hover:text-secondary-fixed-dim font-status text-status">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-lg font-medium">28-F Shortness of Breath</td>
+<td class="py-md px-lg">Pulmonology</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 22, 2023</td>
+<td class="py-md px-lg font-semibold text-secondary">85%</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-secondary-fixed text-on-secondary-container font-status text-status">
+<span class="material-symbols-outlined text-xs">check_circle</span> Passed
+                                </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-secondary hover:text-secondary-fixed-dim font-status text-status">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-lg font-medium">62-M Abdominal Pain</td>
+<td class="py-md px-lg">Gastroenterology</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 20, 2023</td>
+<td class="py-md px-lg font-semibold text-error">62%</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-error-container text-error font-status text-status">
+<span class="material-symbols-outlined text-xs">warning</span> Review Needed
+                                </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-secondary hover:text-secondary-fixed-dim font-status text-status">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-lg font-medium">45-F Unexplained Fatigue</td>
+<td class="py-md px-lg">Endocrinology</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 18, 2023</td>
+<td class="py-md px-lg font-semibold text-on-surface-variant">74%</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-surface-variant text-on-surface-variant font-status text-status">
+<span class="material-symbols-outlined text-xs">check_circle</span> Passed
+                                </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-secondary hover:text-secondary-fixed-dim font-status text-status">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-lg font-medium">71-M Sudden Weakness</td>
+<td class="py-md px-lg">Neurology</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 15, 2023</td>
+<td class="py-md px-lg font-semibold text-tertiary-container">92%</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-container font-status text-status">
+<span class="material-symbols-outlined text-xs">check_circle</span> Mastered
+                                </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-secondary hover:text-secondary-fixed-dim font-status text-status">Review</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md border-t border-outline-variant flex justify-center">
+<button class="text-secondary font-status text-status hover:underline">Load More History</button>
+</div>
+</div>
+</main>
+</body></html>
