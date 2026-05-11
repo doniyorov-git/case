@@ -26,7 +26,7 @@ include '../includes/head.php';
         </a>
         <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" href="cases.php">
             <span class="material-symbols-outlined">edit_note</span>
-            <span class="font-label-caps text-label-caps">Content</span>
+            <span class="font-label-caps text-label-caps">Case Content</span>
         </a>
     </nav>
     <div class="mt-auto px-sm border-t border-outline-variant pt-md flex flex-col gap-unit">
