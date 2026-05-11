@@ -11,13 +11,29 @@ MEDCASE is a plain PHP clinical training simulator. The UI remains server-render
 - `app/Repositories` - database access and demo-data fallback.
 - `app/Core` - request, response, routing, session, and PDO connection helpers.
 - `app/Support` - environment and demo case support classes.
-- `database/migrations` - MySQL schema files.
-- `database/seeders` - demo data for local development.
+- `database/medcase.sql` - complete MySQL schema and demo data in one import file.
+- `config.php` - local MySQL connection settings.
 - `design` - renamed prototype exports with readable file names.
 
 ## Configuration
 
-Database credentials are read from environment variables:
+Database credentials are stored in `config.php`:
+
+```php
+return [
+    'db' => [
+        'host' => 'localhost',
+        'port' => '3306',
+        'database' => 'medcase_db',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8mb4',
+        'dsn' => null,
+    ],
+];
+```
+
+Environment variables can override the file values when needed:
 
 ```bash
 DB_HOST=localhost
@@ -32,13 +48,10 @@ DB_CHARSET=utf8mb4
 
 ## Database setup
 
-Run the migration SQL files in order, then optionally load the demo cases:
+Import the complete SQL file:
 
 ```sql
-SOURCE database/migrations/001_create_users_table.sql;
-SOURCE database/migrations/002_create_cases_table.sql;
-SOURCE database/migrations/003_create_user_stats_table.sql;
-SOURCE database/seeders/demo_cases.sql;
+SOURCE database/medcase.sql;
 ```
 
 Passwords are stored with `password_hash()` and checked with `password_verify()`.
